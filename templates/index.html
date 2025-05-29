@@ -1,64 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Weather App</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
-      background: #f0f4f8;
+      font-family: Arial, sans-serif;
+      background: #e0f7fa;
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
+      padding-top: 50px;
     }
     .container {
       background: white;
       padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #aaa;
       width: 350px;
+      text-align: center;
     }
-    h1 {
-      margin-bottom: 1rem;
-      color: #333;
-    }
-    input {
+    input[type="text"] {
       width: 80%;
       padding: 0.5rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      margin-bottom: 1rem;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      font-size: 1rem;
     }
     button {
       padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 8px;
-      background-color: #007BFF;
+      margin-top: 1rem;
+      background: #00796b;
       color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
       cursor: pointer;
-      font-weight: bold;
     }
     button:hover {
-      background-color: #0056b3;
+      background: #004d40;
     }
-    .error {
+    label {
+      margin-right: 1rem;
+      font-size: 0.9rem;
+    }
+    p.error {
       color: red;
-      margin-bottom: 1rem;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>🌤️ Weather App</h1>
+    <h1>Check the Weather</h1>
     {% if error %}
-      <div class="error">{{ error }}</div>
+      <p class="error">{{ error }}</p>
     {% endif %}
     <form method="post" action="/weather">
-      <input type="text" name="location" placeholder="Enter city name" required>
-      <br>
+      <input type="text" name="location" placeholder="Enter city name" required><br><br>
+      <label>
+        <input type="radio" name="units" value="metric" checked> Celsius (°C)
+      </label>
+      <label>
+        <input type="radio" name="units" value="imperial"> Fahrenheit (°F)
+      </label><br><br>
       <button type="submit">Get Weather</button>
     </form>
   </div>
