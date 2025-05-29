@@ -1,14 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Weather App</title>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 350px;
+    }
+    h1 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    input {
+      width: 80%;
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .error {
+      color: red;
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
 <body>
-    <h1>Check the Weather</h1>
+  <div class="container">
+    <h1>🌤️ Weather App</h1>
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
     <form method="post" action="/weather">
-        <input type="text" name="location" placeholder="Enter city name" required>
-        <button type="submit">Get Weather</button>
+      <input type="text" name="location" placeholder="Enter city name" required>
+      <br>
+      <button type="submit">Get Weather</button>
     </form>
+  </div>
 </body>
 </html>

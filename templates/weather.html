@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather for {{ weather.name }}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #e0f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      width: 400px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1rem;
+      color: #007BFF;
+    }
+    p {
+      margin: 0.5rem 0;
+      color: #333;
+    }
+    a {
+      display: inline-block;
+      margin-top: 1.5rem;
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Weather in {{ weather.name }}, {{ weather.sys.country }}</h1>
+    <p><strong>Description:</strong> {{ weather.weather[0].description }}</p>
+    <p><strong>Temperature:</strong> {{ weather.main.temp }} °C</p>
+    <p><strong>Feels Like:</strong> {{ weather.main.feels_like }} °C</p>
+    <p><strong>Humidity:</strong> {{ weather.main.humidity }}%</p>
+    <p><strong>Wind Speed:</strong> {{ weather.wind.speed }} m/s</p>
+    <a href="/">🔄 Check another location</a>
+  </div>
+</body>
+</html>

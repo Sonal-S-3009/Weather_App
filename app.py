@@ -1,3 +1,21 @@
+from flask import Flask, render_template, request
+import requests
+import os
+from dotenv import load_dotenv
+from datetime import datetime
+import pytz
+
+
+# Load environment variables
+load_dotenv()
+
+app = Flask(__name__)
+API_KEY = os.getenv("WEATHER_API_KEY")
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
 @app.route('/weather', methods=['POST'])
 def get_weather():
     location = request.form['location']
@@ -9,3 +27,6 @@ def get_weather():
     else:
         error_msg = 'City not found. Please try again.'
         return render_template('index.html', error=error_msg)
+
+if __name__ == '__main__':
+    app.run(debug=True)
